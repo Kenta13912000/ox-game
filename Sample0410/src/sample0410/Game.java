@@ -1,15 +1,19 @@
 package sample0410;
 
+//ゲームの実行・進行を行うクラス
 public class Game {
 	//フィールド
 	private Board board = new Board();
 	private Display display = new Display();
-	private InputHandler inputHandler = new InputHandler();
-	private String currentPlayer = "o";
+	private InputHandler inputHandler = new InputHandler();	//ネーミング（他のメソッドも）
+	private String currentPlayer = "o";		//識別と表示を分ける
 
 	//ゲーム開始
 	public void run() {
-		//ゲーム開始から終了までループ
+		//初期化処理
+		
+		
+		//メイン処理(ループ)
 		gameLoop();
 
 		//終了処理
@@ -17,13 +21,15 @@ public class Game {
 
 	}
 
-	//ゲーム開始～終了までのループメソッド
+	//ゲーム開始～終了までのループメソッド(名前変更→ループを外す)　※名前をいろんな観点からよく考える
 	private void gameLoop() {
 		while (!isGameOver()) {
-			//入力～配置までの処理
+			//画面表示をやっているかがわかりにくい
+			
+			//入力～配置までの処理(1～3)
 			playTurn();
 
-			//勝敗判定
+			//勝敗判定(4)→継続条件とまとめる
 			if (board.checkWin(currentPlayer)) {
 				break;
 			}

@@ -2,6 +2,7 @@ package sample0410;
 
 import java.util.Scanner;
 
+//入力・バリデーションを担当するクラス
 public class InputHandler {
 	//フィールド
 	private Scanner scanner = new Scanner(System.in);

@@ -1,5 +1,6 @@
 package sample0410;
 
+//座標を管理するクラス
 public class Position {
 	//フィールド
 	private int row;

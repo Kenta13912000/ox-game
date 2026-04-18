@@ -1,5 +1,6 @@
 package sample0410;
 
+//盤面の制御を担当するクラス
 public class Board {
 	//フィールド
 	private String[][] board;

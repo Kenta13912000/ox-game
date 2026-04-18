@@ -1,5 +1,6 @@
 package sample0410;
 
+//コンソール表示を担当するクラス
 public class Display {
 	//フィールド
 	private static final int SIZE = 3;
