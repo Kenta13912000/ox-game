@@ -6,5 +6,6 @@ public class Main {
 		// TODO 自動生成されたメソッド・スタブ	
 		Game game = new Game();
 		game.run();
+		//編集
 	}		 
 }
