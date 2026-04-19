@@ -56,7 +56,7 @@ public class Board {
 
 	// 3つのマスがすべて同じマークか判定するメソッド
 	private boolean isSame(String a, String b, String c, Player player) {
-		return a.equals(player.getSymbol()) && b.equals(player.getSymbol()) && c.equals(player.getSymbol());
+		return a.equals(player.getmark()) && b.equals(player.getmark()) && c.equals(player.getmark());
 
 	}
 
@@ -81,12 +81,12 @@ public class Board {
 			}
 		}
 
-		return false; // 空きなし
+		return false; // 空きなし = 引き分け
 	}
 
 	// 配置メソッド
 	public void placeMark(int row, int column, Player player) {
-		board[row][column] = player.getSymbol();
+		board[row][column] = player.getmark();
 
 	}
 

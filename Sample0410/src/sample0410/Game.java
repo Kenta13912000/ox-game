@@ -5,11 +5,10 @@ public class Game {
 	// フィールド
 	private Board board = new Board();
 	private Display display = new Display();
-	private PlaceInput input = new PlaceInput(); // ネーミング（他のメソッドも）
-	// private String currentPlayer = "o"; // 識別と表示を分ける
-	Player player = Player.o;
+	private PlaceInput input = new PlaceInput(); // ネーミング（他のメソッドも）→変更
+	private Player player = Player.o;
 
-	// ゲーム開始
+	// ゲーム実行処理→初期化・メイン・終了処理の構成に変更
 	public void run() {
 		// 初期化処理
 
@@ -21,12 +20,12 @@ public class Game {
 
 	}
 
-	// メイン処理(終了条件を満たすまでループ) ※名前をいろんな観点からよく考える
+	// メイン処理(終了条件を満たすまでループ)→メソッド名変更
 	private void mainProcess() {
 		// stateを定義
 		GameState state = GameState.ONGOING;
 
-		// stateがONGOINGの間ループ
+		// stateがONGOINGの間ループ→勝敗判定と継続条件を１本化
 		while (state == GameState.ONGOING) {
 			// 表示→入力→配置までの処理
 			playTurn();
@@ -76,5 +75,6 @@ public class Game {
 
 		// 結果を表示
 		display.showResult(board.getWinner());
+
 	}
 }

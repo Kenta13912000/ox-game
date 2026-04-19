@@ -1,17 +1,22 @@
 package sample0410;
 
+//プレイヤーを表すenum型
 public enum Player {
+  // 各プレイヤーと表示用のマークを定義
   o("o"),
   x("x");
 
-  private final String symbol;
+  // フィールド
+  private final String mark;
 
-  Player(String symbol) {
-    this.symbol = symbol;
+  // コンストラクタ
+  Player(String mark) {
+    this.mark = mark;
 
   }
 
-  public String getSymbol() {
-    return symbol;
+  // 表示用のマークのゲッターメソッド
+  public String getmark() {
+    return mark;
   }
 }

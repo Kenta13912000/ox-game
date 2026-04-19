@@ -5,9 +5,9 @@ public class Display {
 	// フィールド
 	private static final int SIZE = 3;
 
-	// プレイヤーのターン案内を表示するメソッド
+	// プレイヤーのターン案内を表示するメソッド→引数をString型からPlayer型に変更
 	public void showTurnInfo(Player player) {
-		System.out.println("プレイヤー " + player.getSymbol() + " の番です");
+		System.out.println("プレイヤー " + player.getmark() + " の番です");
 		System.out.println("配置したい場所を入力してください。");
 		System.out.println("（上から順に0～2行目, 左から順に0～2列目）");
 		System.out.println();
