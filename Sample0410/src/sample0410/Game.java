@@ -3,20 +3,30 @@ package sample0410;
 //ゲームの実行・進行を行うクラス
 public class Game {
 	// フィールド
-	private Board board = new Board();
-	private Display display = new Display();
-	private PlaceInput input = new PlaceInput(); // ネーミング（他のメソッドも）→変更
-	private Player player = Player.o;
+	private Board board;
+	private Display display;
+	private PlaceInput input; // ネーミング（他のメソッドも）→変更
+	private Player player;
 
 	// ゲーム実行処理→初期化・メイン・終了処理の構成に変更
 	public void run() {
 		// 初期化処理
+		initialize();
 
 		// メイン処理
 		mainProcess();
 
 		// 終了処理
 		finish();
+
+	}
+
+	// 初期化処理
+	public void initialize() {
+		board = new Board();
+		display = new Display();
+		input = new PlaceInput();
+		player = Player.o;
 
 	}
 
