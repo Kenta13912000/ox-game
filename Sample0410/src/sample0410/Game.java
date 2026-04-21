@@ -5,14 +5,17 @@ public class Game {
 	// フィールド
 	private Board board;
 	private Display display;
-	private PlaceInput input; // ネーミング（他のメソッドも）→変更
+	private PlaceInput input; // ネーミング（他のフィールド・メソッドも）→変更
 	private Player player;
+
+	// コンストラクタ
+	public Game() {
+		// 初期化処理
+		initialize();
+	};
 
 	// ゲーム実行処理→初期化・メイン・終了処理の構成に変更
 	public void run() {
-		// 初期化処理
-		initialize();
-
 		// メイン処理
 		mainProcess();
 
@@ -22,7 +25,7 @@ public class Game {
 	}
 
 	// 初期化処理
-	public void initialize() {
+	private void initialize() {
 		board = new Board();
 		display = new Display();
 		input = new PlaceInput();
