@@ -3,7 +3,7 @@ package sample0410;
 import java.util.Scanner;
 
 //入力・バリデーションを担当するクラス→クラス名改善
-public class PlaceInput {
+public class PositionInput {
 	// フィールド→マジックナンバー解消
 	private static final int minLength = 0;
 	private static final int maxLength = 2;
@@ -11,17 +11,15 @@ public class PlaceInput {
 
 	// 入力・バリデーションメソッド→close
 	public Position inputPosition(Board board) {
-		int row;
-		int column;
+		int row = -1;
+		int column = -1;
 		boolean isValid = false;
 
 		do {
 			// 入力受付
-			System.out.println("行(0～2):");
-			row = scanner.nextInt();
+			row = checkNumber("行(0～2):");
 
-			System.out.println("列(0～2):");
-			column = scanner.nextInt();
+			column = checkNumber("列(0～2):");
 
 			// 範囲チェック→continue文削除
 			if (row < minLength || row > maxLength || column < minLength || column > maxLength) {
@@ -39,5 +37,26 @@ public class PlaceInput {
 
 		return new Position(row, column);
 
+	}
+
+	// 数値チェックメソッド
+	private int checkNumber(String position) {
+		boolean isNumber = false;
+		String input;
+		int number = 0;
+
+		do {
+			System.out.println(position); // "行(0～2):" or "列(0～2):"
+			input = scanner.next();
+
+			try {
+				number = Integer.parseInt(input);
+				isNumber = true; // 数値だったらtrue
+			} catch (NumberFormatException e) {
+				System.out.println("数値以外が入力されました。数値を入力してください。");
+			}
+		} while (!isNumber);
+
+		return number;
 	}
 }
