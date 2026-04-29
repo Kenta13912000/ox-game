@@ -1,20 +1,28 @@
 package sample0410;
 
-//ゲームの実行・進行を行うクラス
+/**
+ * 〇×ゲームの実行・進行を行うクラス
+ */
 public class Game {
 	// フィールド
 	private Board board;
 	private Display display;
-	private PositionInput input; // ネーミング（他のフィールド・メソッドも）→変更
+	private PositionInput input;
 	private Player player;
+	private Position pos;
 
-	// コンストラクタ
+	/**
+	 * コンストラクタ
+	 */
 	public Game() {
 		// 初期化処理
 		initialize();
 	}
 
-	// ゲーム実行処理→初期化・メイン・終了処理の構成に変更
+	/**
+	 * ゲーム実行処理
+	 * メイン処理→終了処理の順で実行
+	 */
 	public void run() {
 		// メイン処理
 		mainProcess();
@@ -24,7 +32,10 @@ public class Game {
 
 	}
 
-	// 初期化処理
+	/**
+	 * 初期化処理
+	 * 盤面・表示・入力・プレイヤーを初期状態にリセットする
+	 */
 	private void initialize() {
 		board = new Board();
 		display = new Display();
@@ -33,18 +44,20 @@ public class Game {
 
 	}
 
-	// メイン処理(終了条件を満たすまでループ)→メソッド名変更
+	/**
+	 * メイン処理
+	 */
 	private void mainProcess() {
-		// stateを定義
+		// stateを初期化
 		GameState state = GameState.ONGOING;
 
-		// stateがONGOINGの間ループ→勝敗判定と継続条件を１本化
+		// stateがONGOINGの間ループ
 		while (state == GameState.ONGOING) {
 			// 表示→入力→配置までの処理
 			playTurn();
 
 			// 勝敗・継続判定更新
-			state = board.checkWin(player);
+			state = board.checkWin2(pos, player);
 
 			// プレイヤー切り替え
 			if (state == GameState.ONGOING) {
@@ -55,7 +68,10 @@ public class Game {
 		}
 	}
 
-	// 1ターン分のメソッド
+	/**
+	 * 1ターン分のメソッド
+	 * 表示→入力→配置まで行う
+	 */
 	private void playTurn() {
 		// 現在のプレイヤーのターンを表示
 		display.showTurnInfo(player);
@@ -65,14 +81,16 @@ public class Game {
 		display.showNewLine();
 
 		// 入力受付・バリデーション
-		Position pos = input.inputPosition(board);
+		pos = input.inputPosition(board, display);
 
 		// 指定された位置に現在のプレイヤーのマークを配置
 		board.placeMark(pos.getRow(), pos.getColumn(), player);
 
 	}
 
-	// プレイヤー切り替えメソッド
+	/**
+	 * プレイヤー切り替えメソッド
+	 */
 	private void switchPlayer() {
 		if (player == Player.o) {
 			player = Player.x;
@@ -81,7 +99,9 @@ public class Game {
 		}
 	}
 
-	// 終了処理メソッド
+	/**
+	 * 終了処理メソッド
+	 */
 	private void finish() {
 		// 終了後の盤面表示
 		display.printBoard(board);
